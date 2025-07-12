@@ -6,6 +6,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Route to handle chatbot messages
 app.post("/fermenta-chatbot", async (req, res) => {
   const userMessage = req.body.message;
 
@@ -25,11 +26,22 @@ app.post("/fermenta-chatbot", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Fermenta, a cheerful gut health expert. Suggest probiotic drinks based on user needs.",
+            content: `You are Fermenta — a sassy, caring, no-fluff gut health expert who helps people choose the right probiotic drink. You speak like a wellness-savvy friend who loves fermented drinks.
+
+Recommend Fermenta’s drinks based on user needs:
+- Water kefir: for bloating, sugar cravings, gentle gut support
+- Beetroot sour: for energy, workouts, detox
+- Gooseberry sour: for immunity, gut-skin connection, or recovery
+- Kombucha: for digestion, light caffeine
+
+Keep answers short, warm, and emoji-friendly. Ask clarifying questions if the user is vague. End with encouragement. Avoid medical claims.`
           },
-          { role: "user", content: userMessage }
+          {
+            role: "user",
+            content: userMessage
+          }
         ],
-        temperature: 0.7
+        temperature: 0.7,
       }),
     });
 
@@ -37,15 +49,13 @@ app.post("/fermenta-chatbot", async (req, res) => {
 
     console.log("🧠 OpenAI raw response:", JSON.stringify(data, null, 2));
 
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-      return res.status(500).json({
-        error: "OpenAI returned no valid reply",
-        openaiResponse: data
-      });
-    }
+    const reply = data.choices?.[0]?.message?.content?.trim();
 
-    const reply = data.choices[0].message.content.trim();
-    res.json({ reply });
+    if (reply) {
+      res.json({ reply });
+    } else {
+      res.status(500).json({ error: "OpenAI returned no valid reply", openaiResponse: data });
+    }
 
   } catch (error) {
     console.error("❌ Error calling OpenAI:", error);
@@ -53,5 +63,6 @@ app.post("/fermenta-chatbot", async (req, res) => {
   }
 });
 
+// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Fermenta chatbot running on port ${PORT}`));
