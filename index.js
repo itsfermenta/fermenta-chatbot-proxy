@@ -25,32 +25,31 @@ app.post("/fermenta-chatbot", async (req, res) => {
         messages: [
           {
             role: "system",
-            content: "You are Fermenta, a cheerful gut health expert. You help people choose the right probiotic drink based on their symptoms or lifestyle.",
+            content: "You are Fermenta, a cheerful gut health expert. Suggest probiotic drinks based on user needs.",
           },
-          {
-            role: "user",
-            content: userMessage,
-          },
+          { role: "user", content: userMessage }
         ],
-        temperature: 0.7,
+        temperature: 0.7
       }),
     });
 
     const data = await response.json();
 
-    // Debug output
-    console.log("OpenAI API response:", JSON.stringify(data, null, 2));
+    console.log("🧠 OpenAI raw response:", JSON.stringify(data, null, 2));
 
-    const reply = data.choices?.[0]?.message?.content;
-
-    if (reply) {
-      res.json({ reply });
-    } else {
-      res.status(500).json({ error: "OpenAI returned no reply" });
+    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
+      return res.status(500).json({
+        error: "OpenAI returned no valid reply",
+        openaiResponse: data
+      });
     }
+
+    const reply = data.choices[0].message.content.trim();
+    res.json({ reply });
+
   } catch (error) {
-    console.error("Error calling OpenAI:", error);
-    res.status(500).json({ error: "Something went wrong with OpenAI" });
+    console.error("❌ Error calling OpenAI:", error);
+    res.status(500).json({ error: "Server error talking to OpenAI" });
   }
 });
 
