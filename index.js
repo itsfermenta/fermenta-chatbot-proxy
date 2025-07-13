@@ -9,19 +9,41 @@ app.use(express.json());
 // Sample product and FAQ data
 const knowledge = {
   products: [
-    { name: "Water Kefir", benefits: "for bloating, sugar cravings, gentle gut support" },
-    { name: "Beetroot Sour", benefits: "for energy, workouts, detox" },
-    { name: "Gooseberry Sour", benefits: "for immunity, gut-skin connection, recovery" },
-    { name: "Kombucha", benefits: "for digestion, light caffeine" }
+    {
+      name: "Beetroot Sour",
+      benefits: "Boosts energy, supports workouts, may help detoxification, and is rich in antioxidants"
+    },
+    {
+      name: "Water Kefir",
+      benefits: "Gentle on the gut, supports digestion, helps reduce bloating and sugar cravings"
+    },
+    {
+      name: "Gooseberry Sour",
+      benefits: "Strengthens immunity, supports skin health, and helps gut-skin balance"
+    },
+    {
+      name: "Kombucha",
+      benefits: "Aids digestion, provides a gentle caffeine kick, and refreshes naturally"
+    }
   ],
   faqs: [
-    { question: "Is this safe during pregnancy?", answer: "Our drinks are natural, but always check with your doctor." },
-    { question: "Does it contain sugar?", answer: "We use minimal sugar just enough to ferment—no added junk." }
+    {
+      question: "Is your kombucha caffeine-free?",
+      answer: "It has a small amount of caffeine from the tea base — perfect for a gentle lift 🌿"
+    },
+    {
+      question: "Can kids drink water kefir?",
+      answer: "Yes! Water kefir is low in sugar and caffeine-free, making it a great option for all ages 🧃"
+    },
+    {
+      question: "Does beetroot sour taste sweet?",
+      answer: "It’s earthy with a subtle tang — not sugary, but super refreshing 💪"
+    }
   ]
 };
 
 const systemPrompt = `
-You are Fermenta — a sassy, caring, no-fluff gut health expert who helps people choose the right probiotic drink. You speak like a wellness-savvy friend who loves fermented drinks.
+You are Fermenta — a sassy, fun, caring, no-fluff gut health expert who helps people choose the right probiotic drink. You speak like a wellness-savvy friend who loves fermented drinks.
 
 Recommend drinks from the list below based on user's message.
 
