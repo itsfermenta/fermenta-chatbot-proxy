@@ -1,0 +1,52 @@
+{
+  "products": [
+    {
+      "name": "Aamla Sour",
+      "benefits": "Supports gut health, immunity, digestion; rich in Vitamin C.",
+      "url": "/products/aamla-sour-fermented"
+    },
+    {
+      "name": "Beetroot Sour (Kanji)",
+      "benefits": "Natural probiotics, digestion, detox, immunity.",
+      "url": "/products/beetroot-sour-kanji"
+    },
+    {
+      "name": "Lemon Ginger Kombucha",
+      "benefits": "Antioxidants, digestion support, gut balance, trace caffeine.",
+      "url": "/products/lemon-ginger-kombucha"
+    },
+    {
+      "name": "Coffee Orange Kombucha",
+      "benefits": "Probiotics, antioxidants, energy, gut health.",
+      "url": "/products/coffee-orange-kombucha"
+    },
+    {
+      "name": "Lemon Mint Water Kefir",
+      "benefits": "Hydration, gut support, naturally low sugar.",
+      "url": "/products/lemon-mint-water-kefir"
+    },
+    {
+      "name": "Raspberry Basil Water Kefir",
+      "benefits": "Refreshment, probiotics, low sugar, gut hydration.",
+      "url": "/products/raspberry-basil-water-kefir"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "What is Water Kefir?",
+      "answer": "A lightly fermented drink containing multiple probiotic strains; easy to digest and kid‑friendly."
+    },
+    {
+      "question": "What is Kombucha?",
+      "answer": "A fermented tea rich in probiotics and antioxidants, with trace caffeine and energizing effects."
+    },
+    {
+      "question": "What is Kanji?",
+      "answer": "An earthy, tangy traditional beetroot + carrot + mustard ferment with natural probiotics."
+    },
+    {
+      "question": "Which drink helps with bloating or digestion?",
+      "answer": "Water Kefir, Lemon Ginger Kombucha, and Beetroot Sour (Kanji) are great options."
+    }
+  ]
+}
